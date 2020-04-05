@@ -13,7 +13,10 @@ export default function App() {
             <nav>
               <ul>
                 <li>
-                  <Link to="/"></Link>
+                  <Link to="/">5 Day Forecast</Link>
+                </li>
+                <li>
+                  <Link to="/[name-of-day]">Day</Link>
                 </li>
               </ul>
             </nav>
