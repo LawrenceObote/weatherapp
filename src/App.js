@@ -31,5 +31,13 @@ export default function App() {
             </Route>
           </Switch>
         </Router>
-    )
+    );
+}
+
+function FiveDay() {
+  return <h1>Five Day Forecast</h1>;
+}
+
+function Hourly() {
+  return <h1>Hourly Forecast for</h1>;
 }
