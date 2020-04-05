@@ -21,6 +21,15 @@ export default function App() {
               </ul>
             </nav>
           </div>
+
+          <Switch>
+            <Route path="/">
+              <FiveDay />
+            </Route>
+            <Route path="/[name-of-day]">
+               <Day />
+            </Route>
+          </Switch>
         </Router>
     )
 }
