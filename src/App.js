@@ -12,7 +12,12 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-     high: null
+     high: null,
+     low: null,
+     low1: null,
+     low2: null,
+     low3: null,
+     low4: null
     };
   }
 
@@ -23,7 +28,7 @@ class App extends React.Component {
 
       const fiveDay = await axios.get(url2);
       this.setState({high: fiveDay.data.main.temp_max});
-      console.log("vvvv", fiveDay);
+      console.log("fiveDay", fiveDay);
     } catch(e) {
       console.error(e);
     }
@@ -35,8 +40,14 @@ class App extends React.Component {
       
 
       const daily = await axios.get(url);
-      console.log( "aaaa", daily);
-      this.setState({low: daily.data.main.temp_min});
+      console.log( "daily", daily);
+
+      for(let i=0;i<5;i++){
+        let state = "low" + i;
+        console.log(state);
+        this.setState({state: daily.data.list[i].main.temp_min});
+      }
+      
     }catch(e) {
       console.error(e);
     }
@@ -67,6 +78,7 @@ class App extends React.Component {
               </ul>
             </nav>
             <h1>{this.state.high}</h1>
+            <h1>{this.state.low}</h1>
 
           </div>
 
