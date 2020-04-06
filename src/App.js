@@ -5,9 +5,38 @@ import {
     Route,
     Link
 } from "react-router-dom";
+import axios from 'axios';
 
-export default function App() {
-    return(
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+     
+    };
+  }
+
+  async fiveDay () {
+    try{
+      let url = "http://api.openweathermap.org/data/2.5/weather?q=Burlington&units=metric&APPID=143a8ef26c89c530c8c2eff7d7c9e6d6";
+      let url2 = "http://api.openweathermap.org/data/2.5/weather?id=6424355&appid=143a8ef26c89c530c8c2eff7d7c9e6d6";
+
+
+      const fiveDay = await axios.get(url2);
+      console.log("adseascd", fiveDay);
+    } catch(e) {
+      console.error(e);
+    }
+  }
+
+  async daily () {
+
+  }
+
+
+
+    render() {
+      return(
         <Router>
           <div>
             <nav>
@@ -24,20 +53,20 @@ export default function App() {
 
           <Switch>
             <Route path="/">
-              <FiveDay />
+              {/* <FiveDay /> */}
             </Route>
             <Route path="/[name-of-day]">
-               <Day />
+               {/* <Daily /> */}
             </Route>
           </Switch>
         </Router>
-    );
+      )
+}
+    componentDidMount() {
+      this.fiveDay();
+      
+;    }
+
 }
 
-function FiveDay() {
-  return <h1>Five Day Forecast</h1>;
-}
-
-function Hourly() {
-  return <h1>Hourly Forecast for</h1>;
-}
+export default App;
